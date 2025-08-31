@@ -44,7 +44,7 @@ Map_ID: HOUSE_01
 Name: "Dilapidated Farmhouse"
 Type: Indoor
 Parent_Map: NULL
-Coordinate_System: Grid, 5x5 feet per square, Origin North-West N1W1, X-axis extends East (W1→W2→W3), Y-axis extends South (N1→N2→N3)
+Coordinate_System: Grid, 5x5 feet per square, Origin North-West N1W1, X-axis extends East (W1 to W2 to W3), Y-axis extends South (N1 to N2 to N3)
 
 General_Sensory_Data:
   Auditory: Crickets, wind in trees, distant traffic hum
@@ -61,9 +61,9 @@ Rooms:
       Visual: Faded wallpaper, cracked ceiling plaster
       Olfactory: Stronger musty scent, old fabric smell
     Transition_Points:
-      N4W2: [DOOR] Front Door (Locked, Heavy Oak) → EXTERNAL_MAP: STREET_MAIN
-      N2W4: [WINDOW] Broken Window (Glass shards on sill) → NESTED_MAP: BARN_INTERIOR
-      N1W3: [DOORWAY] Kitchen Entrance (Open archway) → INTERNAL_MAP: KITCHEN
+      N4W2: [DOOR] Front Door (Locked, Heavy Oak) to EXTERNAL_MAP: STREET_MAIN
+      N2W4: [WINDOW] Broken Window (Glass shards on sill) to NESTED_MAP: BARN_INTERIOR
+      N1W3: [DOORWAY] Kitchen Entrance (Open archway) to INTERNAL_MAP: KITCHEN
     Moveable_Objects:
       N1W2: Couch (Leather, worn, can be pushed)
       N3W3: TV (Old CRT, 32-inch, unplugged)
@@ -80,8 +80,8 @@ Rooms:
       Visual: Peeling linoleum, stained countertops
       Olfactory: Sour milk, cleaning chemicals
     Transition_Points:
-      N1W3: [DOORWAY] Living Room Entrance (Open archway) → INTERNAL_MAP: LIVING_ROOM
-      N3W1: [DOOR] Back Door (Unlocked, Screen door broken) → EXTERNAL_MAP: BACKYARD
+      N1W3: [DOORWAY] Living Room Entrance (Open archway) to INTERNAL_MAP: LIVING_ROOM
+      N3W1: [DOOR] Back Door (Unlocked, Screen door broken) to EXTERNAL_MAP: BACKYARD
     Moveable_Objects:
       N2W2: Kitchen Table (Metal legs, formica top)
       N1W1: Trash Can (Plastic, half-full)
