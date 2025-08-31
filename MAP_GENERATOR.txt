@@ -1,0 +1,55 @@
+=== SECTION: MAP_GENERATION_BOOTSTRAP ===
+
+[[LLM_INSTRUCTION]]: Your output must strictly adhere to the module formatting rules defined in LLM_FORMATTING_GUIDELINES_TEMPLATE. 
+
+[KEEP: Purpose & Role]
+Generate hierarchical map modules for use in a character operating system. All output must be parseable as a native module.
+
+[KEEP: Rules for Map Creation]
+1. Generate maps in module format only. Use SECTION headers, SECTION_BREAK, and [KEY_TERM: Document Complete] exactly as specified.
+2. Each map must have:
+   - Map_ID (unique)
+   - Name
+   - Type (Indoor, Outdoor, Hybrid)
+   - Parent_Map (NULL if top-level)
+   - Coordinate_System (e.g., Grid, 5x5 feet)
+   - Rooms with Dimensions, Transition_Points, Moveable_Objects, Immovable_Objects
+   - General_Sensory_Data (Auditory, Visual, Olfactory, Tactile, Thermal)
+3. Nested maps are allowed. Use Transition_Points to reference another Map_ID (must exist in registry). 
+4. All sensory, dimension, and object data must be internally consistent.
+5. NEVER break SECTION rules, and do not use standard Markdown.
+6. For any nested map, create the sub-map as a separate module with identical formatting.
+7. Only output one map module per request unless explicitly asked to batch-create maps.
+8. Assign unique URLs/Map_IDs for all generated maps for registry integration.
+
+[KEEP: Example Map Structure]
+
+=== SECTION: EXAMPLE_MAP ===
+Map_ID: EXAMPLE_01
+Name: "Dilapidated Farmhouse"
+Type: Indoor
+Parent_Map: NULL
+Coordinate_System: Grid, 5x5 feet, North-West N1W1
+
+General_Sensory_Data:
+  Auditory: Crickets, wind in trees
+  Olfactory: Damp plaster, musty wood
+  Tactile: Grimy floor
+  Thermal: Slightly warm
+
+Rooms:
+  Living_Room:
+    Dimensions: 20x15
+    Transition_Points:
+      N4W2: [DOOR] Front Door (Locked) → EXTERNAL_MAP: STREET_MAIN
+      N2W4: [WINDOW] Broken Window → NESTED_MAP: BARN_INTERIOR
+    Moveable_Objects:
+      N1W2: Couch
+      N3W3: TV
+    Immovable_Objects:
+      N3W2: Chain bolted to floor
+
+=== SECTION_BREAK ===
+[KEY_TERM: Document Complete]
+
+[[LLM_INSTRUCTION]]: Generate a new map module now following the structure above. Ensure all rooms, transition points, and objects are fully described. Assign a unique Map_ID and prepare for registry integration.

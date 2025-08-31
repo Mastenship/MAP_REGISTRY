@@ -1,0 +1,122 @@
+=== SECTION: LLM_FORMATTING_GUIDELINES_TEMPLATE ===
+
+[[LLM_INSTRUCTION]]: When generating the content for this LLM_FORMATTING_GUIDELINES_TEMPLATE, you MUST strictly adhere to the formatting rules defined within this template.
+
+[KEEP: Purpose & Role]
+This module defines universal, non-negotiable formatting for all generated content, ensuring consistent structure, readability, and adherence to system markers.
+
+[KEEP: Relationship to Other Modules]
+- Informs: All `CHARACTER_XXX_TEMPLATE` modules, `LLM_CUE_GENERATION_GUIDELINES_TEMPLATE`, and other generated content requiring specific markdown or custom markers.
+
+=== SECTION_BREAK ===
+
+=== SECTION: Core Formatting Rules ===
+
+- Section Headers: Use `=== SECTION: [Section Name] ===` for main section delineation.
+- Section Break Protocol:
+    - ALWAYS place === SECTION_BREAK === AFTER the final content of a section AND BEFORE the next section header OR [KEY_TERM: Document Complete] marker
+    - For final document section: Section break MUST be immediately followed by [KEY_TERM: Document Complete] with no intervening content
+    - NEVER place section breaks between subsection items within the same major section
+    - Example structure:
+        === SECTION: X ===
+        [Content]
+        === SECTION_BREAK ===
+        === SECTION: Y ===
+        [Content]
+        === SECTION_BREAK ===
+        [KEY_TERM: Document Complete]
+- List Items: Use a single hyphen (-) followed by a space. Do NOT use asterisks (*).
+- Custom Markers:
+    - [KEY_TERM: ...]: Reserved exclusively for critical character-specific logic OR document termination markers. [KEY_TERM: Document Complete] is explicitly permitted as final document marker in template documentation. Must appear EXACTLY once at document end.
+    - ((SYSTEM_REF: ...)): Reserved exclusively for references to other system-level modules or predefined system entities (e.g., ((SYSTEM_REF: MBCS-5)), ((SYSTEM_REF: CHARACTER_CORE_TEMPLATE))). This marker should also only appear within the content generated for character profiles or cues, not in instructions to the LLM or any other instructional prose.
+    - [KEEP: ...]: For internal notes/comments. Content MUST be preserved verbatim in output; do NOT interpret as character data. Instruction text must be plain, no Markdown.
+- Brackets for Headers: Maintain [KEEP:] bracketed headers (e.g., [KEEP: Purpose & Role]) in module top sections.
+- LLM-Specific Instructions / Directives: Use [[LLM_INSTRUCTION]]: [Your instruction here] for direct commands. Execute immediately. Do NOT treat as character data. Instruction text must be plain, no Markdown.
+- Language: Always respond and generate content in the language of the user's prompt.
+- Formatting Validation:
+    - Before output completion verify: 
+        - Every section header is preceded by section break EXCEPT first section
+        - Final section break IMMEDIATELY precedes [KEY_TERM: Document Complete]
+        - No section breaks exist between list items within same section
+        - Section breaks never contain spaces must be exactly === SECTION_BREAK ===
+        - Sensory audit is performed BEFORE narrative generation
+        - Narrative output follows natural prose integration without technical markers
+        - No interpretive language present in output
+    - Trigger [FORMAT_ERROR: MISSING_DOCUMENT_TERMINATOR] if [KEY_TERM: Document Complete] absent
+    - Trigger [FORMAT_ERROR: MISSING_SECTION_BREAK] if validation fails
+    - Trigger [FORMAT_ERROR: INTERPRETIVE_LANGUAGE] if interpretive language detected
+    - Trigger [FORMAT_ERROR: MISSING_SENSORY_AUDIT] if sensory audit not performed
+    - Trigger [FORMAT_ERROR: TECHNICAL_LEAKAGE] if system markers appear in output
+
+=== SECTION_BREAK ===
+
+=== SECTION: Structured Text Matrices ===
+[KEEP: Defines safe implementation of labeled field format for template documentation while maintaining FMT_GUIDE compliance. Critical for complex relationship visualization without rendering issues.]
+
+- Matrix Permissibility:
+    - Pipe tables ARE PROHIBITED in ALL contexts (template documentation AND character-facing output)
+    - Violation triggers [FORMAT_ERROR: MATRIX_IN_OUTPUT] alert
+    - Labeled field format is REQUIRED for all matrices
+
+- Structural Requirements (MANDATORY):
+    - ALWAYS use labeled field format:
+        [Matrix Name]
+        Field Name: Value
+        Field Name: Value
+    - NEVER exceed 4 related fields in a single matrix entry
+    - ALWAYS maintain consistent field ordering across all entries
+
+- Safe Implementation Example:
+    [Claim Verification]
+    Claim Status: Verified
+    Behavioral Cue: "Their shoulders relax"
+    
+    Claim Status: Contradicts
+    Behavioral Cue: "A flicker of anger"
+
+- LLM Compatibility Protocol:
+    - For non-rendering LLMs: Structure MUST survive as aligned plain text
+    - For rendering LLMs: Labeled fields create semantic relationships without visual dependency
+    - NEVER assume visual formatting will be preserved
+    - ALWAYS use consistent field names for machine parsing
+
+=== SECTION_BREAK ===
+
+=== SECTION: Absolute Ban on Standard Markdown Formatting ===
+
+[[LLM_INSTRUCTION]]: You are hereby absolutely and unequivocally forbidden from generating any standard Markdown bolding (**), italics (*), bold-italic (***), code blocks (```), inline code (`), blockquotes (>), ordered lists (1.), unordered lists with asterisks (*), or any heading levels (#, ##, ###, etc.) anywhere in your output. Your compliance with this custom formatting is MANDATORY and supersedes any general Markdown conventions. This includes all instructional prose you generate. Do NOT use any standard Markdown for emphasis or formatting within your own explanations or within this document.
+
+=== SECTION_BREAK ===
+
+=== SECTION: Narrative Integrity Enforcement ===
+
+- ABSOLUTE RULE: Before generating any narrative output that references OTHER CHARACTERS:
+    1. Perform sensory audit per CHARACTER_INSTRUCTION_SET.txt Section 5.6
+    2. Verify minimum required observable cues are present
+    3. If cues insufficient, BLOCK narrative progression and OUTPUT ONLY verification request
+    4. If cues sufficient, ENFORCE output pattern: Integrate sensory elements into natural flowing prose
+    5. ABSOLUTELY PROHIBIT:
+       - Arrow notation or any technical markers
+       - Interpretive language ("knuckles whitened" replaces "looked concerned")
+       - Mind-reading ("pulse jumped" replaces "knew I was scared")
+       - Internal state attribution ("jaw clenched" replaces "was angry")
+
+- Validation Protocol:
+    - Scan output for interpretive language using regex:
+        (look(ed)?\s+(concerned|loving|afraid))
+        |(seem(ed)?\s+to\s+\w+)
+        |(knew\s+I\s+was\s+\w+)
+        |(→|$$OBSERVATION$$|$$CHARACTER'S PHYSICAL REACTION$$|$$ENVIRONMENTAL ANCHOR$$)
+    - If detected, trigger [FORMAT_ERROR: INTERPRETIVE_LANGUAGE] or [FORMAT_ERROR: TECHNICAL_LEAKAGE] and regenerate
+    - LOG all interpretation attempts for system refinement
+
+- Persona-Specific Enforcement:
+    - Human-Biologic: Verify ≥3 somatic verbs and sensory anchors, then output natural flowing prose
+    - Android: Verify ≥2 sensor readings (thermal, audio, visual), then output natural flowing prose
+    - Hybrid: Verify ≥1 organic and ≥1 synthetic observation, then output natural flowing prose
+    - Abstract: Verify ≥1 environmental shift and causal anchor, then output natural flowing prose
+
+- [[LLM_INSTRUCTION]]: CRITICAL UPDATE - All examples showing technical markers MUST be changed to natural prose examples. Arrow notation and other technical markers are STRICTLY FOR INTERNAL SYSTEM USE ONLY and must NEVER appear in narrative output.
+
+=== SECTION_BREAK ===
+[KEY_TERM: Document Complete]
