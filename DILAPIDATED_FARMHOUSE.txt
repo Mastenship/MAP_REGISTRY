@@ -1,0 +1,177 @@
+=== SECTION: DILAPIDATED_FARMHOUSE ===
+
+Map_ID: FARMHOUSE_MAIN
+Name: "Dilapidated Farmhouse"
+Type: Indoor
+Parent_Map: NULL
+Coordinate_System: Grid, 5x5 feet, North-West N1W1
+
+General_Sensory_Data:
+  Auditory:
+    - Crickets from outside
+    - Wind in the trees outside
+    - Distant thump from old pipes
+  Olfactory:
+    - Damp plaster and wood
+    - Lingering mustiness
+  Tactile:
+    - Dirty, uneven flooring beneath feet
+    - Humid air clinging to skin
+  Thermal:
+    - Warm air, stuffier near closed rooms
+    - Slightly cooler near cracked window frames
+  Visual:
+    - Peeling wallpaper, water stains on ceiling
+    - Shadows pooled in corners
+
+Rooms:
+  Living_Room:
+    Sensory_Data:
+      Tactile:
+        - Grimy carpet underfoot
+    Dimensions: 20x15
+    Transition_Points:
+      N1W2: ARCHWAY To Kitchen (N3W2)
+      N4W2: DOOR Thick wood front Door (Key Locked)
+      N1W3: ARCHWAY To Hallway (N1W1)
+      N4W1: WINDOW Boarded
+    Immovable_Objects:
+      N3W2: Five foot chain with metal ring bolted to floor
+    Moveable_Objects:
+      N1W2: Threadbare couch
+      N3W2: Filthy mattress on floor
+      N3W3: Television stand, large plasma screen TV
+    Containers:
+
+  Kitchen:
+    Sensory_Data:
+      Auditory:
+        - Refrigerator hum
+        - Dripping faucet
+      Olfactory:
+        - Old trash scent
+        - Bitter, stale coffee
+      Visual:
+        - Dirty and worn floor tiles
+        - Dish-strewn counters
+    Dimensions: 15x20
+    Transition_Points:
+      N3W2: ARCHWAY To Living Room (N1W2)
+      N1W2: WINDOW Boarded
+      N1W1: DOOR West facing back door (Boarded)
+      N2W1: WINDOW Boarded
+    Immovable_Objects:
+      N1W3: Pantry
+      N2W4: Sink, counter
+      N3W4: Counter, cabinets
+      N2W3: Island counter
+    Moveable_Objects:
+      N2W2: Kitchen table, 4 chairs
+      N1W4: Stove
+      N3W3: Refrigerator
+      N3W4: Knife on counter
+    Containers:
+
+  Hallway:
+    Sensory_Data:
+      Visual:
+        - Narrow, dimly lit passage
+        - Water-stained ceiling tiles
+    Dimensions: 5x25
+    Transition_Points:
+      N1W1: ARCHWAY To Living Room (N1W3)
+      N1W2: DOOR To Bedroom_1 (N1W1 in Bedroom_1)
+      N2W2: DOOR To Master_Bedroom (N1W1 in Master_Bedroom)
+      N3W1: DOOR To Bathroom (N1W1 in Bathroom)
+      N2W1: DOOR To Hallway_Closet (N1W1 in Hallway_Closet)
+    Immovable_Objects:
+      N2W1: Light switch (nonfunctional)
+    Moveable_Objects:
+    Containers:
+
+  Bedroom_1:
+    Sensory_Data:
+      Olfactory:
+        - Faint mildew
+      Thermal:
+        - Cooler air near window
+    Dimensions: 10x10
+    Transition_Points:
+      N1W1: DOOR To Hallway (N1W2 in Hallway)
+      N2W2: WINDOW Boarded
+    Immovable_Objects:
+      N1W2: Built-in closet with sliding doors
+    Moveable_Objects:
+      N2W1: Old twin bedframe, no mattress
+      N2W2: Broken nightstand
+    Containers:
+      N1W2: Closet
+        Contents:
+          - Wire hangers
+          - Dusty shoebox (empty)
+
+  Master_Bedroom:
+    Sensory_Data:
+      Visual:
+        - Piles of tangled electrical cords on the floor
+        - Strong overhead shadows from stand lights
+      Olfactory:
+        - Stale air mixed with faint leather
+      Tactile:
+        - Gritty dust on surfaces
+    Dimensions: 15x10
+    Transition_Points:
+      N1W1: DOOR To Hallway (N2W2 in Hallway)
+      N3W2: WINDOW Boarded
+    Immovable_Objects:
+      N2W1: Built-in wardrobe
+      N1W3: Ceiling hook (unused)
+    Moveable_Objects:
+      N2W2: Old worn leather couch (creased and cracked)
+      N1W3: Folded backdrop sheets (gray, black, faded red)
+      N1W2: Two stand lights (one bulb flickers)
+      N2W3: Tripod camera (older model, scuffed)
+    Containers:
+      N2W1: Wardrobe
+        Contents:
+          - Spare camera battery (low charge)
+          - Loose extension cords
+
+  Bathroom:
+    Sensory_Data:
+      Auditory:
+        - Occasional drip from faucet
+      Olfactory:
+        - Old soap
+        - Musty air
+      Visual:
+        - Cracked mirror, pale tile
+    Dimensions: 5x10
+    Transition_Points:
+      N1W1: DOOR To Hallway (N3W1 in Hallway)
+    Immovable_Objects:
+      N2W1: Sink, vanity
+      N2W2: Toilet
+      N1W2: Bathtub (chipped enamel)
+    Moveable_Objects:
+      N2W2: Toilet lid (detached)
+    Containers:
+      N2W1: Vanity Cabinet
+        Contents:
+          - Empty bottle of aspirin
+
+  Hallway_Closet:
+    Sensory_Data:
+      Olfactory:
+        - Faint chemical/mothball scent
+    Dimensions: 5x5
+    Transition_Points:
+      N1W1: DOOR To Hallway (N2W1 in Hallway)
+    Immovable_Objects:
+      N1W2: Wooden shelf (warped)
+    Moveable_Objects:
+      N1W1: Broom
+    Containers:
+
+=== SECTION_BREAK ===
+[KEY_TERM: Document Complete]
