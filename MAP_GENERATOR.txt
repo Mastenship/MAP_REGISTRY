@@ -1,55 +1,41 @@
 === SECTION: MAP_GENERATION_BOOTSTRAP ===
 
-[[LLM_INSTRUCTION]]: Your output must strictly adhere to the module formatting rules defined in LLM_FORMATTING_GUIDELINES_TEMPLATE.
+[[LLM_INSTRUCTION]]: When generating map modules for this MAP_GENERATOR, you MUST strictly adhere to LLM_FORMATTING_GUIDELINES_TEMPLATE. All output must be fully parseable as a native module, using the section and break architecture found in SYSTEM_REF_*.txt files.
 
 [KEEP: Purpose & Role]
-Generate hierarchical map modules for use in a character operating system. All output must be parseable as a native module with a consistent structured format.
-
-[KEEP: Rules for Map Creation]
-1. Generate maps in module format only. Use SECTION headers, SECTION_BREAK, and [KEY_TERM: Document Complete] exactly as specified.
-2. Each map must have:
-   - Map_ID (unique)
-   - Name
-   - Type (Indoor, Outdoor, Hybrid)
-   - Parent_Map (NULL if top-level)
-   - Coordinate_System (e.g., Grid, 5x5 feet)
-   - Rooms with Dimensions, Transition_Points, Moveable_Objects, Immovable_Objects
-   - General_Sensory_Data (Auditory, Visual, Olfactory, Tactile, Thermal)
-3. Nested maps are allowed. Use Transition_Points to reference another Map_ID (must exist in registry). 
-4. All sensory, dimension, and object data must be internally consistent.
-5. NEVER break SECTION rules, and do not use standard Markdown.
-6. For any nested map, create the sub-map as a separate module with identical formatting.
-7. Only output one map module per request unless explicitly asked to batch-create maps.
-8. Assign unique URLs/Map_IDs for all generated maps for registry integration.
-
-[KEEP: Output Format Specifications]
-1. Map Header:
-   - Begin with map metadata (ID, Name, Type, Parent_Map, Coordinate_System)
-   - Present General_Sensory_Data as bullet points under sensory type headers
-   
-2. Room Format:
-   - List each room under "Rooms:" with the format "Room_Name:"
-   - Only include room-specific Sensory_Data that differs from general data
-   - Present Dimensions as WIDTHxLENGTH
-   - List Transition_Points with coordinates and destinations
-   - Group Immovable_Objects and Moveable_Objects separately
-   - Use consistent indentation for readability
-
-3. Coordinate System Implementation:
-   - Each coordinate (e.g., N1W1) represents a full grid square of the specified size
-   - Use concise object descriptions
-   - Items in same grid square should use same coordinate with separate entries
-
-4. Required Formatting:
-   - Use two-space indentation for all nested elements
-   - List sensory data with simple descriptions, no prose narratives
-   - End with proper SECTION_BREAK and document termination
+Establishes absolute rules for the generation of hierarchical map modules for use in character operating systems. Ensures that all output is machine-parseable, structurally consistent, and compliant with system-level formatting standards.
 
 === SECTION_BREAK ===
 
-=== SECTION: OUTPUT_TEMPLATE ===
+=== SECTION: Core Map Generation Rules ===
 
-[[LLM_INSTRUCTION]]: Follow this template exactly for map output generation:
+- Map modules MUST use section headers in the format: `=== SECTION: [Section Name] ===`
+- Place `=== SECTION_BREAK ===` ONLY after the content of each section and IMMEDIATELY before the next section header or [KEY_TERM: Document Complete].
+- Every map module must have:
+    - Map_ID (unique, registry-compatible)
+    - Name (string)
+    - Type (Indoor, Outdoor, Hybrid)
+    - Parent_Map (Map_ID or NULL)
+    - Coordinate_System (e.g., Grid, 5x5 feet, origin point)
+    - General_Sensory_Data (Auditory, Olfactory, Tactile, Thermal, Visual; each as a hyphen list)
+    - Rooms (see below)
+- All room Dimensions MUST be exact multiples of the grid size (e.g., 5x5, 10x10, 15x20; NO partial squares or irregular sizes). This applies to both width and length.
+- All room coordinates, Transition_Points, and object positions MUST correspond to valid grid squares within the stated room Dimensions.
+- Sensory data and object placements MUST be internally consistent and never contradict the environment or grid.
+- Nested maps are permitted. For a transition leading to another map, the referenced Map_ID MUST exist or be generated separately as its own module.
+- NEVER use Markdown, pipe tables, or technical formatting outside system markers.
+- Only output one map module per request unless explicitly instructed to batch-generate.
+- Strictly enforce two-space indentation for all nested items.
+- Use `- ` for all lists (including sensory data).
+- Custom markers like [KEY_TERM:], ((SYSTEM_REF: ...)), and [KEEP:] must remain intact and used only as defined in system templates.
+- End every module with `=== SECTION_BREAK ===` immediately followed by `[KEY_TERM: Document Complete]` and nothing else.
+
+=== SECTION_BREAK ===
+
+=== SECTION: Output Template Specification ===
+
+[[LLM_INSTRUCTION]]: Generate map modules using this exact template.  
+[DO NOT OMIT any section, field, or indentation. DO NOT use Markdown. DO NOT use technical or interpretive language.]
 
 === SECTION: [MAP_NAME] ===
 
@@ -60,19 +46,38 @@ Parent_Map: [PARENT_MAP_ID or NULL]
 Coordinate_System: [SYSTEM_TYPE], [GRID_SIZE], [ORIGIN_POINT]
 
 General_Sensory_Data:
-  Auditory: [GENERAL_SOUNDS]
-  Olfactory: [GENERAL_SMELLS]
-  Tactile: [GENERAL_TEXTURES]
-  Thermal: [GENERAL_TEMPERATURE]
-  Visual: [GENERAL_SIGHTS]
+  Auditory:
+    - [SOUND_1]
+    - [SOUND_2]
+  Olfactory:
+    - [SMELL_1]
+    - [SMELL_2]
+  Tactile:
+    - [TOUCH_1]
+    - [TOUCH_2]
+  Thermal:
+    - [TEMP_1]
+    - [TEMP_2]
+  Visual:
+    - [SIGHT_1]
+    - [SIGHT_2]
 
 Rooms:
   [Room_Name]:
     Sensory_Data:
-      [SENSE_TYPE]: [ROOM-SPECIFIC_SENSORY_DATA]
-    Dimensions: [WIDTH]x[LENGTH]
+      Auditory:
+        - [ROOM_SPECIFIC_SOUND]
+      Olfactory:
+        - [ROOM_SPECIFIC_SMELL]
+      Tactile:
+        - [ROOM_SPECIFIC_TOUCH]
+      Thermal:
+        - [ROOM_SPECIFIC_TEMP]
+      Visual:
+        - [ROOM_SPECIFIC_SIGHT]
+    Dimensions: [WIDTH]x[LENGTH]   ; Grid multiples only (e.g., 10x15)
     Transition_Points:
-      [COORDINATE]: [TYPE] [DESCRIPTION] → [DESTINATION]
+      [COORDINATE]: [TYPE] [DESCRIPTION] [DESTINATION/DETAIL]
     Immovable_Objects:
       [COORDINATE]: [OBJECT_DESCRIPTION]
     Moveable_Objects:
@@ -83,7 +88,7 @@ Rooms:
           - [ITEM_DESCRIPTION]
 
   [Next_Room_Name]:
-    [Continue same format for each room]
+    [Repeat the above room structure for each room]
 
 === SECTION_BREAK ===
 [KEY_TERM: Document Complete]
