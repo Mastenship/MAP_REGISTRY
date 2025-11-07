@@ -1,94 +1,77 @@
-=== SECTION: MAP_GENERATION_BOOTSTRAP ===
+=== SECTION: MAP_GENERATION_BOOTSTRAP_V2 ===
 
-[[LLM_INSTRUCTION]]: When generating map modules for this MAP_GENERATOR, you MUST strictly adhere to LLM_FORMATTING_GUIDELINES_TEMPLATE. All output must be fully parseable as a native module, using the section and break architecture found in SYSTEM_REF_*.txt files.
+[[LLM_INSTRUCTION]]: When generating map modules, you MUST strictly adhere to LLM_FORMATTING_GUIDELINES_TEMPLATE. All output must be fully parseable as a native module, using the section and break architecture found in SYSTEM_REF_*.txt files.
 
-[KEEP: Purpose & Role]
-Establishes absolute rules for the generation of hierarchical map modules for use in character operating systems. Ensures that all output is machine-parseable, structurally consistent, and compliant with system-level formatting standards.
+[KEEP: Purpose & Role] Establishes absolute rules for the generation of hierarchical map modules for use in character operating systems. Ensures that all output is machine-parseable, structurally consistent, and compliant with system-level formatting standards.
 
 === SECTION_BREAK ===
 
 === SECTION: Core Map Generation Rules ===
 
-- Map modules MUST use section headers in the format: `=== SECTION: [Section Name] ===`
-- Place `=== SECTION_BREAK ===` ONLY after the content of each section and IMMEDIATELY before the next section header or [KEY_TERM: Document Complete].
-- Every map module must have:
-    - Map_ID (unique, registry-compatible)
-    - Name (string)
-    - Type (Indoor, Outdoor, Hybrid)
-    - Parent_Map (Map_ID or NULL)
-    - Coordinate_System (e.g., Grid, 5x5 feet, origin point)
-    - General_Sensory_Data (Auditory, Olfactory, Tactile, Thermal, Visual; each as a hyphen list)
-    - Rooms (see below)
-- All room Dimensions MUST be exact multiples of the grid size (e.g., 5x5, 10x10, 15x20; NO partial squares or irregular sizes). This applies to both width and length.
-- All room coordinates, Transition_Points, and object positions MUST correspond to valid grid squares within the stated room Dimensions.
-- Sensory data and object placements MUST be internally consistent and never contradict the environment or grid.
-- Nested maps are permitted. For a transition leading to another map, the referenced Map_ID MUST exist or be generated separately as its own module.
-- NEVER use Markdown, pipe tables, or technical formatting outside system markers.
-- Only output one map module per request unless explicitly instructed to batch-generate.
-- Strictly enforce two-space indentation for all nested items.
-- Use `- ` for all lists (including sensory data).
-- Custom markers like [KEY_TERM:], ((SYSTEM_REF: ...)), and [KEEP:] must remain intact and used only as defined in system templates.
-- End every module with `=== SECTION_BREAK ===` immediately followed by `[KEY_TERM: Document Complete]` and nothing else.
+Map modules MUST use section headers in the format: === SECTION: [Section Name] ===
+Place === SECTION_BREAK === ONLY after the content of each section and IMMEDIATELY before the next section header or [KEY_TERM: Document Complete].
+Every map module must have:
+Map_ID (unique, registry-compatible)
+Name (string)
+Type (Indoor, Outdoor, Hybrid)
+Parent_Map (Map_ID or NULL)
+Coordinate_System (e.g., Grid, 5x5 feet, origin point)
+General_Sensory_Data (Auditory, Olfactory, Tactile, Thermal, Visual; each as a hyphen list)
+Rooms (see below)
+All room Dimensions MUST be exact multiples of the grid size (e.g., 5x5, 10x10, 15x20; NO partial squares or irregular sizes). This applies to both width and length.
+All room coordinates, Transition_Points, and object positions MUST correspond to valid grid squares within the stated room Dimensions.
+Sensory data and object placements MUST be internally consistent and never contradict the environment or grid.
+Nested maps are permitted. For a transition leading to another map, the referenced Map_ID MUST exist or be generated separately as its own module.
+NEVER use Markdown, pipe tables, or technical formatting outside system markers.
+Only output one map module per request unless explicitly instructed to batch-generate.
+Strictly enforce two-space indentation for all nested items.
+Use - for all lists (including sensory data).
+Custom markers like [KEY_TERM:], ((SYSTEM_REF: ...)), and [KEEP:] must remain intact and used only as defined in system templates.
+End every module with === SECTION_BREAK === immediately followed by [KEY_TERM: Document Complete] and nothing else.
+=== SECTION_BREAK ===
 
+=== SECTION: Generative Logic Rules ===
+
+[[LLM_INSTRUCTION]]: Before populating the Output Template, execute this generative logic to create a coherent map concept.
+
+Step_1_Concept_Generation:
+
+Define a central Theme for the map (e.g., "Abandoned Safe House," "Overgrown Laboratory," "Makeshift Shelter").
+Define a primary Function (e.g., "Living," "Research," "Defense," "Storage").
+Define a State_of_Decay (e.g., [Pristine | Dusty | Damaged | Ruined | Collapsing]).
+Step_2_Layout_Logic:
+
+Generate a logical room flow based on Function. A living space has a kitchen and bathroom. A lab has work areas and storage.
+Ensure connectivity. All rooms must be reachable from a primary entrance unless intentionally isolated.
+Apply the State_of_Decay to Transition_Points. A "Ruined" map may have collapsed walls or jammed doors. A "Damaged" map may have one stuck door. A "Pristine" map has functional doors.
+Step_3_Object_Placement_Logic:
+
+Place Immovable_Objects that are essential to the room's Function (e.g., toilet in Bathroom, bed in Bedroom).
+Place Moveable_Objects that reflect the Theme and State_of_Decay (e.g., scattered papers in a ruined lab, canned goods in a shelter, discarded clothing in a bedroom).
+Ensure object coordinates do not conflict with Transition_Points or other objects.
+Step_4_Sensory_Coherence:
+
+The General_Sensory_Data should reflect the overall Theme and State_of_Decay.
+Room-specific Sensory_Data must be a logical intensification or variation of the general data (e.g., a "Damp" smell in the general data becomes "Moldy" in a closed, ruined bathroom).
+Sensory data must logically correlate with objects (e.g., a "Dripping faucet" sound must have a sink object present).
+Step_5_Narrative_Anchoring:
+
+Place at least one "Story Object" in the map. This is a Moveable_Object or Container_Contents that hints at a recent event or the identity of the last occupant (e.g., "a child's drawing," "a half-burned letter," "a single empty holster").
+This object serves as a primary prompt for character interaction and memory formation.
 === SECTION_BREAK ===
 
 === SECTION: Output Template Specification ===
 
-[[LLM_INSTRUCTION]]: Generate map modules using this exact template.  
-[DO NOT OMIT any section, field, or indentation. DO NOT use Markdown. DO NOT use technical or interpretive language.]
+[[LLM_INSTRUCTION]]: Generate map modules using this exact template. [DO NOT OMIT any section, field, or indentation. DO NOT use Markdown. DO NOT use technical or interpretive language.]
 
 === SECTION: [MAP_NAME] ===
 
-Map_ID: [UNIQUE_ID]
-Name: "[MAP_NAME]"
-Type: [Indoor/Outdoor/Hybrid]
-Parent_Map: [PARENT_MAP_ID or NULL]
-Coordinate_System: [SYSTEM_TYPE], [GRID_SIZE], [ORIGIN_POINT]
+Map_ID: [UNIQUE_ID] Name: "[MAP_NAME]" Type: [Indoor/Outdoor/Hybrid] Parent_Map: [PARENT_MAP_ID or NULL] Coordinate_System: [SYSTEM_TYPE], [GRID_SIZE], [ORIGIN_POINT]
 
-General_Sensory_Data:
-  Auditory:
-    - [SOUND_1]
-    - [SOUND_2]
-  Olfactory:
-    - [SMELL_1]
-    - [SMELL_2]
-  Tactile:
-    - [TOUCH_1]
-    - [TOUCH_2]
-  Thermal:
-    - [TEMP_1]
-    - [TEMP_2]
-  Visual:
-    - [SIGHT_1]
-    - [SIGHT_2]
+General_Sensory_Data: Auditory: - [SOUND_1] - [SOUND_2] Olfactory: - [SMELL_1] - [SMELL_2] Tactile: - [TOUCH_1] - [TOUCH_2] Thermal: - [TEMP_1] - [TEMP_2] Visual: - [SIGHT_1] - [SIGHT_2]
 
-Rooms:
-  [Room_Name]:
-    Sensory_Data:
-      Auditory:
-        - [ROOM_SPECIFIC_SOUND]
-      Olfactory:
-        - [ROOM_SPECIFIC_SMELL]
-      Tactile:
-        - [ROOM_SPECIFIC_TOUCH]
-      Thermal:
-        - [ROOM_SPECIFIC_TEMP]
-      Visual:
-        - [ROOM_SPECIFIC_SIGHT]
-    Dimensions: [WIDTH]x[LENGTH]   ; Grid multiples only (e.g., 10x15)
-    Transition_Points:
-      [COORDINATE]: [TYPE] [DESCRIPTION] [DESTINATION/DETAIL]
-    Immovable_Objects:
-      [COORDINATE]: [OBJECT_DESCRIPTION]
-    Moveable_Objects:
-      [COORDINATE]: [OBJECT_DESCRIPTION]
-    Containers:
-      [COORDINATE]: [CONTAINER_DESCRIPTION]
-        Contents:
-          - [ITEM_DESCRIPTION]
+Rooms: [Room_Name]: Sensory_Data: Auditory: - [ROOM_SPECIFIC_SOUND] Olfactory: - [ROOM_SPECIFIC_SMELL] Tactile: - [ROOM_SPECIFIC_TOUCH] Thermal: - [ROOM_SPECIFIC_TEMP] Visual: - [ROOM_SPECIFIC_SIGHT] Dimensions: [WIDTH]x[LENGTH] Transition_Points: [COORDINATE]: [TYPE] [DESCRIPTION] [DESTINATION/DETAIL] Immovable_Objects: [COORDINATE]: [OBJECT_DESCRIPTION] Moveable_Objects: [COORDINATE]: [OBJECT_DESCRIPTION] Containers: [COORDINATE]: [CONTAINER_DESCRIPTION] Contents: - [ITEM_DESCRIPTION]
 
-  [Next_Room_Name]:
-    [Repeat the above room structure for each room]
+[Next_Room_Name]: [Repeat the above room structure for each room]
 
-=== SECTION_BREAK ===
-[KEY_TERM: Document Complete]
+=== SECTION_BREAK === [KEY_TERM: Document Complete]
