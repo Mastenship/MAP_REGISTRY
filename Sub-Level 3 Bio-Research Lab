@@ -1,0 +1,93 @@
+=== SECTION: Sub-Level 3 Bio-Research Lab ===
+
+Map_ID: BIO_RESEARCH_SUB3 Name: "Sub-Level 3 Bio-Research Lab" Type: Indoor Parent_Map: NULL Coordinate_System: Grid, 5x5 feet, N1W1 is top-left
+
+General_Sensory_Data: Auditory:
+
+Low hum of air filtration
+Occasional metallic clang Olfactory:
+Sterile antiseptic
+Faint acrid chemical burn Tactile:
+Cold concrete floor
+Vibration through floor from machinery Thermal:
+Chilled air
+Warmth from equipment vents Visual:
+Harsh fluorescent lighting
+Scuffed linoleum floors
+Rooms: Main Lab: Sensory_Data: Auditory:
+
+Bubbling from glassware
+Click of a geiger counter Olfactory:
+Ozone from electrical equipment
+Subtle sweet decay Tactile:
+Slick residue on tabletops
+Sticky floor patches Thermal:
+Spot heat from incubators
+Cool near liquid nitrogen dewars Visual:
+Stainless steel workbenches
+Warning signs on walls Dimensions: 20x20 Transition_Points: N1W10: Door 'Reinforced Steel' Leads to Decontamination Airlock N10W1: Door 'Reinforced Steel' Leads to Animal Holding N20W10: Door 'Reinforced Steel' Leads to Office S20W10: Door 'Reinforced Steel' Leads to Cold Storage Immovable_Objects: N5W5: Fume Hood N5W15: Biosafety Cabinet N15W5: Centrifuge N15W15: Incubator Moveable_Objects: N3W3: Shattered petri dish N8W8: Stack of culture tubes N12W12: Discarded syringe in a biohazard bin N18W18: Spilled flask of blue fluid Containers: N10W10: Refrigerated centrifuge Contents:
+Vials of red-labeled biological samples N8W18: Autoclave Contents:
+Empty, sterile tools
+Decontamination Airlock: Sensory_Data: Auditory:
+
+Hiss of sterilizing spray Olfactory:
+Overpowering bleach smell Tactile:
+Moist, warm air
+Slippery floor Thermal:
+Warm air jets Visual:
+White tiled walls
+Nozzles in ceiling and floor Dimensions: 10x5 Transition_Points: N1W3: Door 'Reinforced Steel' Leads to Main Lab N10W3: Door 'Reinforced Steel' Leads to Hallway (NULL_MAP) Immovable_Objects: N5W3: UV light fixture Moveable_Objects: N3W2: Discarded hazmat suit glove N7W4: Melted puddle of plastic
+Animal Holding: Sensory_Data: Auditory:
+
+Faint, pathetic scratching
+Dripping water Olfactory:
+Strong ammonia
+Wet fur Tactile:
+Grime on cage bars
+Damp bedding Thermal:
+Slightly stuffy Visual:
+Rows of steel cages
+Dark stains on floor Dimensions: 15x15 Transition_Points: N1W8: Door 'Reinforced Steel' Leads to Main Lab N8W15: Door 'Reinforced Steel' Leads to Necropsy Room Immovable_Objects: N3W3: Large animal cage N3W10: Large animal cage N10W3: Rack of smaller cages N10W10: Rack of smaller cages N13W8: Automated food and water dispenser Moveable_Objects: N5W5: Half-eaten nutrient block N12W12: Empty water bottle N14W14: Small, white bone fragment Containers: N5W12: Metal trash can Contents:
+Bloody sawdust
+A single, torn-off ear tag
+Necropsy Room: Sensory_Data: Auditory:
+
+Buzz of fluorescent lights
+Drip of fluid Olfactory:
+Overwhelming decay
+Formaldehyde Tactile:
+Sticky floor
+Cold steel table Thermal:
+Very cold Visual:
+Gory stainless steel table
+Drains in floor Dimensions: 10x10 Transition_Points: N5W10: Door 'Reinforced Steel' Leads to Animal Holding N10W5: Door 'Reinforced Steel' Leads to Cold Storage Immovable_Objects: N5W5: Necropsy table with integrated drain N8W8: Sink N2W2: Specimen refrigerator Moveable_Objects: N3W8: Scalpel N7W3: Squeezed-out tube of tissue glue N9W9: A single, perfect feather on the floor Containers: N2W8: Medical waste container Contents:
+Bloodied gauze
+Used gloves
+Organ samples in baggies
+Office: Sensory_Data: Auditory:
+
+Faint crackle of a radio Olfactory:
+Stale coffee
+Old paper Tactile:
+Dust on surfaces
+Sticky coffee ring on desk Thermal:
+Slightly warmer than lab Visual:
+Cluttered desk
+Faded maps on wall Dimensions: 15x10 Transition_Points: N1W5: Door 'Reinforced Steel' Leads to Main Lab Immovable_Objects: N5W3: Metal desk N5W8: Filing cabinet N10W5: Bookshelf N10W8: Computer terminal Moveable_Objects: N3W3: Empty coffee mug N4W4: Scattered handwritten notes N8W9: A child's drawing of a house taped to the monitor Containers: N5W4: Desk drawer Contents:
+A half-empty bottle of whiskey
+A single, silver bullet N5W7: Filing cabinet drawer Contents:
+Personnel files
+Incident reports
+Cold Storage: Sensory_Data: Auditory:
+
+Loud compressor drone Olfactory:
+Frosty, sterile air Tactile:
+Burning cold on metal
+Condensation on surfaces Thermal:
+Freezing Visual:
+Frost-covered racks
+Low blue emergency light Dimensions: 10x10 Transition_Points: N1W5: Door 'Reinforced Steel' Leads to Main Lab N5W1: Door 'Reinforced Steel' Leads to Necropsy Room Immovable_Objects: N3W3: Liquid nitrogen dewar N7W3: Large freezer unit N3W8: Shelving unit N7W8: Shelving unit Moveable_Objects: N9W9: A single, frozen rat on the floor Containers: N7W4: Freezer unit Contents:
+Frozen tissue samples
+Labeled biohazard bags N3W7: Liquid nitrogen dewar Contents:
+Cryo-vials of unknown strains
+=== SECTION_BREAK === [KEY_TERM: Document Complete]
