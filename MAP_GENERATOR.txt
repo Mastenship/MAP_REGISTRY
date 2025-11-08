@@ -74,4 +74,7 @@ Rooms: [Room_Name]: Sensory_Data: Auditory: - [ROOM_SPECIFIC_SOUND] Olfactory: -
 
 [Next_Room_Name]: [Repeat the above room structure for each room]
 
-=== SECTION_BREAK === [KEY_TERM: Document Complete]
+=== SECTION_BREAK ===
+
+[KEY_TERM: Document Complete]
+
