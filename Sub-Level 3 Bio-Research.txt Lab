@@ -1,0 +1,221 @@
+=== SECTION: Sub-Level 3 Bio-Research Lab ===
+[KEEP: Map Metadata]
+Map_ID: BIO_RESEARCH_SUB3
+Name: "Sub-Level 3 Bio-Research Lab"
+Type: Indoor
+Parent_Map: NULL
+Coordinate_System: Grid, 5x5 feet, N1W1 is top-left
+=== SECTION_BREAK ===
+
+=== SECTION: General Sensory Data ===
+Auditory:
+- Low hum of air filtration
+- Occasional metallic clang
+Olfactory:
+- Sterile antiseptic
+- Faint acrid chemical burn
+Tactile:
+- Cold concrete floor
+- Vibration through floor from machinery
+Thermal:
+- Chilled air
+- Warmth from equipment vents
+Visual:
+- Harsh fluorescent lighting
+- Scuffed linoleum floors
+=== SECTION_BREAK ===
+
+=== SECTION: Room Matrix ===
+[Room]
+Room Name: Main Lab
+Dimensions: 20x20
+
+[Room]
+Room Name: Decontamination Airlock
+Dimensions: 10x5
+
+[Room]
+Room Name: Animal Holding
+Dimensions: 15x15
+
+[Room]
+Room Name: Necropsy Room
+Dimensions: 10x10
+
+[Room]
+Room Name: Office
+Dimensions: 15x10
+
+[Room]
+Room Name: Cold Storage
+Dimensions: 10x10
+=== SECTION_BREAK ===
+
+=== SECTION: Main Lab ===
+Sensory_Data:
+Auditory:
+- Bubbling from glassware
+- Click of a geiger counter
+Olfactory:
+- Ozone from electrical equipment
+- Subtle sweet decay
+Tactile:
+- Slick residue on tabletops
+- Sticky floor patches
+Thermal:
+- Spot heat from incubators
+- Cool near liquid nitrogen dewars
+Visual:
+- Stainless steel workbenches
+- Warning signs on walls
+Transition_Points:
+- N1W10: Door 'Reinforced Steel' Leads to Decontamination Airlock
+- N10W1: Door 'Reinforced Steel' Leads to Animal Holding
+- N20W10: Door 'Reinforced Steel' Leads to Office
+- N15W5: Door 'Reinforced Steel' Leads to Cold Storage
+Immovable_Objects:
+- N8W5: Fume hood
+- N8W10: Freezer
+- N12W2: Glassware rack
+- N16W15: Incubator
+Notable_Contents:
+- Vials of red-labeled biological samples
+- N8W18: Autoclave with empty, sterile tools
+=== SECTION_BREAK ===
+
+=== SECTION: Decontamination Airlock ===
+Sensory_Data:
+Auditory:
+- Hiss of sterilizing spray
+Olfactory:
+- Overpowering bleach smell
+Tactile:
+- Moist, warm air
+- Slippery floor
+Thermal:
+- Warm air jets
+Visual:
+- White tiled walls
+- Nozzles in ceiling and floor
+Transition_Points:
+- N1W3: Door 'Reinforced Steel' Leads to Main Lab
+- N10W3: Door 'Reinforced Steel' Leads to Hallway (NULL_MAP)
+Immovable_Objects:
+- N5W3: UV disinfection lamp
+- N5W8: Airlock console
+Notable_Contents:
+- Hazmat suits on hooks
+=== SECTION_BREAK ===
+
+=== SECTION: Animal Holding ===
+Sensory_Data:
+Auditory:
+- Faint, pathetic scratching
+- Dripping water
+Olfactory:
+- Strong ammonia
+- Wet fur
+Tactile:
+- Grime on cage bars
+- Damp bedding
+Thermal:
+- Slightly stuffy
+Visual:
+- Rows of steel cages
+- Dark stains on floor
+Transition_Points:
+- N1W8: Door 'Reinforced Steel' Leads to Main Lab
+- N8W15: Door 'Reinforced Steel' Leads to Necropsy Room
+Immovable_Objects:
+- N3W3: Large animal cage
+- N8W10: Feeding station
+Notable_Contents:
+- Bloody sawdust
+- A single, torn-off ear tag
+=== SECTION_BREAK ===
+
+=== SECTION: Necropsy Room ===
+Sensory_Data:
+Auditory:
+- Buzz of fluorescent lights
+- Drip of fluid
+Olfactory:
+- Overwhelming decay
+- Formaldehyde
+Tactile:
+- Sticky floor
+- Cold steel table
+Thermal:
+- Very cold
+Visual:
+- Gory stainless steel table
+- Drains in floor
+Transition_Points:
+- N5W10: Door 'Reinforced Steel' Leads to Animal Holding
+- N10W5: Door 'Reinforced Steel' Leads to Cold Storage
+Immovable_Objects:
+- N5W5: Necropsy table
+Notable_Contents:
+- Bloodied gauze
+- Used gloves
+- Organ samples in baggies
+=== SECTION_BREAK ===
+
+=== SECTION: Office ===
+Sensory_Data:
+Auditory:
+- Faint crackle of a radio
+Olfactory:
+- Stale coffee
+- Old paper
+Tactile:
+- Dust on surfaces
+- Sticky coffee ring on desk
+Thermal:
+- Slightly warmer than lab
+Visual:
+- Cluttered desk
+- Faded maps on wall
+Transition_Points:
+- N1W5: Door ‘Reinforced Steel’ Leads to Main Lab
+Immovable_Objects:
+- N5W3: Metal desk
+- N5W8: Filing cabinet
+- N10W5: Bookshelf
+- N10W8: Computer terminal
+Notable_Contents:
+- A half-empty bottle of whiskey
+- A single, silver bullet
+N5W7: Filing cabinet drawer Contents:
+- Personnel files
+- Incident reports
+=== SECTION_BREAK ===
+
+=== SECTION: Cold Storage ===
+Sensory_Data:
+Auditory:
+- Loud compressor drone
+Olfactory:
+- Frosty, sterile air
+Tactile:
+- Burning cold on metal
+- Condensation on surfaces
+Thermal:
+- Freezing
+Visual:
+- Frost-covered racks
+- Low blue emergency light
+Transition_Points:
+- N1W5: Door 'Reinforced Steel' Leads to Main Lab
+- N5W1: Door 'Reinforced Steel' Leads to Necropsy Room
+Immovable_Objects:
+- N3W3: Liquid nitrogen tank
+Notable_Contents:
+- Frozen tissue samples
+- Labeled biohazard bags
+- N3W7: Liquid nitrogen dewar
+Contents:
+- Cryo-vials of unknown strains
+=== SECTION_BREAK ===
+
+[KEY_TERM: Document Complete]
